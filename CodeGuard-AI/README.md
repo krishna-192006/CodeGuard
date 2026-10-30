@@ -1,190 +1,279 @@
-# CodeGuard AI 2.0: Intelligent Automated Code Review and Bug Detection Using LLM
+<div align="center">
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 81 Passing](https://img.shields.io/badge/tests-81%20passed-brightgreen.svg)]()
-[![Model: Gemini 3.8 Flash](https://img.shields.io/badge/model-gemini--3.8--flash-orange.svg)]()
-[![Frontend: Streamlit](https://img.shields.io/badge/frontend-streamlit-red.svg)]()
+# 🛡️ CodeGuard AI 2.0
+### Enterprise Hybrid Code Auditing, Vulnerability Detection & Remediation Intelligence
 
-> **CodeGuard AI 2.0** is an enterprise-grade hybrid code auditing and defect detection platform developed as part of the HCLTech Career Shaper Programme. It couples deterministic multi-language rule engines, static Abstract Syntax Tree (AST) analysis, production linters (Bandit, Pylint, Radon), and Google Gemini Large Language Models into a unified, explainable review system with side-by-side remediations, ground-truth benchmarking, and automated unit test generation.
+[![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Test Suite](https://img.shields.io/badge/Test%20Suite-81%20Passed-22c55e.svg?style=for-the-badge&logo=pytest&logoColor=white)]()
+[![Model](https://img.shields.io/badge/LLM%20Engine-Gemini%203.8%20Flash-f97316.svg?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Security Linting](https://img.shields.io/badge/Linters-Bandit%20%7C%20Pylint%20%7C%20Radon-6366f1.svg?style=for-the-badge&logo=security&logoColor=white)]()
+[![UI Platform](https://img.shields.io/badge/Frontend-Streamlit%20SaaS%20Dark-ef4444.svg?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
----
-
-## 📑 Table of Contents
-1. [Core Modules Overview](#-core-modules-overview)
-2. [Architectural Layers & Detection Engines](#-architectural-layers--detection-engines)
-3. [Gemini Integration & Diagnostic Pipeline](#-gemini-integration--diagnostic-pipeline)
-4. [Modern Dark UI & File Ingestion](#-modern-dark-ui--file-ingestion)
-5. [Benchmark Dataset & Scientific Evaluation](#-benchmark-dataset--scientific-evaluation)
-6. [Technology Stack](#-technology-stack)
-7. [Repository Structure](#-repository-structure)
-8. [Installation & Quick Start](#-installation--quick-start)
-9. [Automated Test Suite](#-automated-test-suite)
-10. [Security & Isolation Principles](#-security--isolation-principles)
+<p align="center">
+  <b>An industrial-grade Static Application Security Testing (SAST) & LLM Remediation Platform</b><br>
+  Engineered under the HCLTech Career Shaper Programme to combine deterministic Abstract Syntax Tree (AST) analysis, multi-language pattern heuristics, security linters, and Google Gemini reasoning into a unified, zero-trust review architecture.
+</p>
 
 ---
 
-## 🏛️ Core Modules Overview
+[Key Capabilities](#-key-capabilities) •
+[System Architecture](#-system-architecture) •
+[Review Pipeline Workflow](#-review-pipeline-workflow) •
+[Network Diagnostics Pipeline](#-network-diagnostics-pipeline) •
+[Core Modules](#-core-modules) •
+[Scientific Evaluation](#-scientific-evaluation--ground-truth-benchmark) •
+[Getting Started](#-installation--quick-start) •
+[Test Verification](#-automated-testing--ci-verification)
 
-CodeGuard AI 2.0 is structured into seven primary functional modules accessible via the navigation sidebar:
-
-### 1. 📊 Executive Dashboard
-- **Quality & Severity Telemetry:** Live KPIs displaying total code reviews executed, average code health score, critical/high/medium defect distribution, and fix acceptance rate.
-- **Interactive Visualizations:** Severity breakdown bar charts, language distribution donuts, defect category distributions, and review activity timelines.
-- **Recent Activity Table:** Displays historical audit logs directly populated from SQLite with quick-restore capabilities.
-
-### 2. 🔍 Code Review & Vulnerability Audit
-- **Multi-Language Selector:** Python, Java, JavaScript, TypeScript, C/C++, Go, SQL, C#, PHP, Ruby, HTML, CSS.
-- **Engine Toggles:** Granular control over which engines execute (Rule Engine, AST Analyzer, Linters, Gemini LLM).
-- **Clean File Ingestion Dropzone:** Minimalist, clutter-free drag-and-drop file upload supporting single or multi-file batches with size validation and active file switching.
-- **Multi-Attribute Deduplication:** Merges overlapping findings from static and LLM engines with preserved provenance (`Detected by: Rule Engine, Bandit, Gemini`).
-- **Export Options:** Instant downloads for audit reports in JSON, CSV, and formal Academic PDF formats.
-
-### 3. 🔎 Issue Explorer & Remediation Lab
-- **State Synchronization:** Fully synchronized with active code review state; allows viewing findings immediately after review or restoring any past review from SQLite.
-- **Filter & Search:** Real-time filtering by Severity, Category, Detection Engine, and keyword search.
-- **Confidence Scoring & Basis:** Transparent confidence percentage with explainable reasoning basis for every finding.
-- **Side-by-Side Code Comparison:** Visual diff comparing original vulnerable snippets against suggested corrected remediation code.
-- **Automated Pytest Reproduction:** Automatically drafts targeted, isolated Pytest unit test suites that reproduce detected vulnerabilities to guard against regressions.
-
-### 4. 📈 Evaluation & Analytics (Research-Grade)
-- **Zero Fabricated Metrics:** Benchmarks detection engines against a 100% verified ground-truth dataset (`data/benchmark_dataset.csv`).
-- **Head-to-Head Comparison:** Computes Precision, Recall, F1-Score, False Positive Rate (FPR), and Total Detection counts across Rule-Based, AST, Static Linters, and Hybrid approaches.
-- **Confusion Matrix Heatmap:** Live interactive confusion matrix comparing True Positives, False Positives, True Negatives, and False Negatives.
-
-### 5. 📁 Dataset Explorer
-- **Telemetry Inspection:** Browse the full historical code review telemetry dataset (`data/dataset.csv`).
-- **Descriptive Statistics:** Inspect feature distributions, severity correlations, and accepted fix rates.
-- **Search & Download:** Filter historical dataset records and export filtered views as CSV.
-
-### 6. 🕒 Review History & Audit Trail
-- **Persistent Storage:** Backed by SQLite3 (`database/codeguard_history.db`).
-- **State Restoration:** Click **"Load Review"** on any past record to instantly restore the full audit state into the Code Review and Issue Explorer modules.
-- **Database Telemetry:** Inspect file names, lines of code, analysis duration, and quality ratings over time.
-
-### 7. ⚙️ Application & Engine Settings
-- **Safe API Key Management:** Masked input field with local environment fallback; keys are never logged, printed, or committed.
-- **Multi-Stage Network Diagnostics:** Live pipeline inspecting DNS, TCP 443, TLS, API authentication, and model reachability.
-- **Real-Time Status Badges:** Visual indicators reflecting actual Google Gemini availability.
+</div>
 
 ---
 
-## 🌟 Architectural Layers & Detection Engines
+## 🌟 Key Capabilities
 
+- **Hybrid Multi-Engine Detection:** Blends Python Abstract Syntax Tree (`ast.NodeVisitor`) inspections, polyglot regex heuristics, industrial security linters (Bandit, Pylint, Radon), and Google Gemini Large Language Model analysis into one pipeline.
+- **Enterprise Network Diagnostic Engine:** 5-layer diagnostic probe verifying DNS resolution, TCP port 443 handshake, TLS negotiation, API key authorization, and model availability with sub-second health checks.
+- **Direct REST over TLS (Port 443):** Engineered to prevent gRPC streaming deadlocks and Windows firewall timeouts with exponential backoff and automatic retry logic (HTTP 429, 500, 502, 503, 504).
+- **Multi-Attribute Deduplication & Provenance:** Correlates duplicate defects across engines by line range, category, and AST node while tracking origin engines (`Detected by: Rule Engine, Bandit, Gemini`).
+- **Remediation & Automated Pytest Suite Generation:** Provides side-by-side vulnerable vs. corrected diffs and dynamically compiles isolated Pytest suites to reproduce and prevent defects.
+- **Scientific Ground-Truth Benchmarking:** Evaluates performance against a verified multi-language dataset with Precision, Recall, F1-Score, and False Positive Rates. No simulated scores.
+- **Zero-Trust Execution Security:** Analyzed source code is never executed on the host runtime. Subprocess linters execute with restricted privileges, memory limits, and strict timeouts.
+
+---
+
+## 🏛️ System Architecture
+
+The following class and component relationship diagram illustrates the decoupled layers of CodeGuard AI 2.0:
+
+```mermaid
+classDiagram
+    direction TB
+    
+    class AnalysisRequest {
+        +str code
+        +str language
+        +str filename
+        +List~str~ enabled_engines
+    }
+
+    class CodeIssue {
+        +str id
+        +str title
+        +str description
+        +str severity
+        +str category
+        +int line_number
+        +int end_line_number
+        +float confidence
+        +List~str~ detection_sources
+        +str evidence
+        +str suggested_fix
+        +str corrected_code
+    }
+
+    class ReviewResult {
+        +str review_id
+        +str timestamp
+        +str language
+        +int overall_quality
+        +str summary
+        +List~CodeIssue~ issues
+        +Dict analyzer_statuses
+        +float analysis_duration_sec
+    }
+
+    class AnalyzerCore {
+        +analyse_code(AnalysisRequest) ReviewResult
+        -_deduplicate_issues(List~CodeIssue~) List~CodeIssue~
+    }
+
+    class ASTAnalyzer {
+        +analyze(str code) List~CodeIssue~
+    }
+
+    class RuleEngine {
+        +analyze(str code, str language) List~CodeIssue~
+        -_strip_comments(str code, str language) str
+    }
+
+    class StaticLinters {
+        +run_bandit(str code) List~CodeIssue~
+        +run_pylint(str code) List~CodeIssue~
+        +run_radon(str code) List~CodeIssue~
+    }
+
+    class LLMService {
+        +analyse(str code, str language) ReviewResult
+        -_call_gemini_rest(str prompt) Dict
+        +run_diagnostics() Dict
+    }
+
+    class ConnectionTester {
+        +run_gemini_diagnostics(str api_key, str model) Dict
+        +verify_gemini_connection(str api_key, str model) Tuple~bool, str~
+    }
+
+    class SQLiteHistory {
+        +save_review(ReviewResult, str filename, int lines) int
+        +get_all_reviews(int limit) List~ReviewRecord~
+        +get_review_by_id(str review_id) ReviewResult
+    }
+
+    AnalysisRequest --> AnalyzerCore : Ingests
+    AnalyzerCore --> ASTAnalyzer : Dispatches AST
+    AnalyzerCore --> RuleEngine : Dispatches Rules
+    AnalyzerCore --> StaticLinters : Dispatches Linters
+    AnalyzerCore --> LLMService : Dispatches Semantic
+    LLMService --> ConnectionTester : Validates Network
+    AnalyzerCore --> ReviewResult : Emits
+    ReviewResult *-- CodeIssue : Contains
+    AnalyzerCore --> SQLiteHistory : Persists Telemetry
 ```
-                           +--------------------------------------+
-                           |       Source Code / File Upload      |
-                           +--------------------------------------+
-                                              |
-               +------------------------------+------------------------------+
-               |                              |                              |
-               v                              v                              v
-    +--------------------+        +--------------------+        +--------------------+
-    | AST Python Parser  |        | Polyglot Rules     |        | Static Linters     |
-    | (ast.NodeVisitor)  |        | (Regex & Patterns) |        | (Bandit/Pylint/Radon)
-    +--------------------+        +--------------------+        +--------------------+
-               |                              |                              |
-               +------------------------------+------------------------------+
-                                              |
-                                              v
-                              +--------------------------------+
-                              | Contextual Google Gemini LLM   |
-                              | (Direct REST over Port 443)    |
-                              +--------------------------------+
-                                              |
-                                              v
-                              +--------------------------------+
-                              | Deduplication & Provenance     |
-                              | (Multi-attribute matching)     |
-                              +--------------------------------+
-                                              |
-                                              v
-                              +--------------------------------+
-                              | ReviewResult & SQLite History  |
-                              +--------------------------------+
+
+---
+
+## 🔄 Review Pipeline Workflow
+
+The complete end-to-end lifecycle from code submission to remediation export:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Developer as Developer / Auditor
+    participant UI as Streamlit UI
+    participant Core as Central Orchestrator
+    participant Static as AST & Rule Engines
+    participant Linters as Bandit / Pylint / Radon
+    participant LLM as Google Gemini (REST 443)
+    participant DB as SQLite3 Database
+
+    Developer->>UI: Submit Code or Upload File(s)
+    UI->>Core: Dispatch AnalysisRequest
+    
+    par Static Parsing
+        Core->>Static: Parse AST & Regex Heuristics
+        Static-->>Core: Structural & Pattern Issues
+    and Process Isolation
+        Core->>Linters: Execute Isolated Linter Subprocesses
+        Linters-->>Core: Security, Lint & Complexity Issues
+    and Contextual Intelligence
+        Core->>LLM: Direct REST Request (gemini-3.8-flash)
+        LLM-->>Core: Semantic Issues & Suggested Fixes
+    end
+
+    Core->>Core: Deduplicate Findings & Merge Provenance
+    Core->>DB: Persist ReviewResult & Audit Telemetry
+    Core-->>UI: Return Unified ReviewResult
+
+    par Interactive Exploration
+        UI->>Developer: Render Quality KPIs & Issue Explorer
+    and Test Generation
+        UI->>Developer: Compile & Export Pytest Reproduction Suite
+    and Multi-format Export
+        UI->>Developer: Generate JSON / CSV / Formal Academic PDF
+    end
 ```
 
-1. **AST Structural Parser (`core/ast_analyzer.py`)**:
-   - Parses Python syntax trees without executing untrusted code.
-   - Detects mutable default arguments, constant division by zero, `eval()`/`exec()` usage, suspicious literal identity checks (`is None` vs `== None`), and overly broad `except:` clauses.
+---
 
-2. **Polyglot Rule Engine (`core/rule_engine.py`)**:
-   - High-throughput pattern matching across Python, Java, JavaScript, TypeScript, C/C++, Go, and SQL.
-   - Intelligent multi-line comment stripping to prevent false positives in docstrings and comments.
-   - Outputs exact line spans, severity ratings, and concrete remediation snippets.
+## 🔍 Network Diagnostics Pipeline
 
-3. **Production Static Linters (`core/static_analyzer.py`)**:
-   - **Bandit:** Discovers hardcoded secrets, weak cryptographic hashes (MD5, SHA1), SQL injections, and insecure configurations.
-   - **Pylint:** Flags coding standard violations, undefined variables, and logic bugs.
-   - **Radon:** Measures cyclomatic complexity and maintainability index.
-   - Process sandboxing with strict timeouts prevents runaway processes.
+To prevent hanging connections and ensure enterprise-level fault isolation, CodeGuard AI executes an explicit 5-stage health probe:
 
-4. **Contextual LLM Reasoning (`core/llm_service.py`)**:
-   - Leverages Google Gemini (`gemini-3.8-flash`) for deep semantic bug analysis, architectural anti-patterns, and contextual patches.
-   - Structured JSON schema deserialization with validation and graceful degradation when offline.
+```mermaid
+flowchart TD
+    Start([Initiate Connection Test]) --> Stage1[Stage 1: DNS Resolution]
+    
+    Stage1 -->|Failed: Errno 11001| ErrDNS[Flag DNS Failure: Host Unreachable]
+    Stage1 -->|Success: Resolved IP| Stage2[Stage 2: TCP Handshake]
+    
+    Stage2 -->|Timeout > 15s| ErrTCP[Flag TCP Timeout: Port 443 Blocked]
+    Stage2 -->|Connected| Stage3[Stage 3: TLS/SSL Handshake]
+    
+    Stage3 -->|SSLError / Cert Expired| ErrTLS[Flag TLS Verification Failure]
+    Stage3 -->|Encrypted Session Active| Stage4[Stage 4: API Key Authentication]
+    
+    Stage4 -->|HTTP 400 / 403| ErrAuth[Flag Invalid or Unauthorized API Key]
+    Stage4 -->|Authenticated| Stage5[Stage 5: Model Availability]
+    
+    Stage5 -->|HTTP 404| ErrModel[Flag Model Not Found: Identifier Invalid]
+    Stage5 -->|HTTP 429| ErrQuota[Flag Rate Limit / Quota Exceeded]
+    Stage5 -->|HTTP 200: countTokens Validated| Success([Overall Status: Connected])
+
+    ErrDNS --> Fallback([Graceful Fallback: Local Rules + AST + Linters])
+    ErrTCP --> Fallback
+    ErrTLS --> Fallback
+    ErrAuth --> Fallback
+    ErrModel --> Fallback
+    ErrQuota --> Fallback
+```
 
 ---
 
-## ⚡ Gemini Integration & Diagnostic Pipeline
+## 🧩 Core Modules
 
-CodeGuard AI 2.0 features an enterprise-grade Google Gemini integration designed to eliminate timeout deadlocks and provide full diagnostic visibility:
-
-### 1. Direct REST Architecture over Port 443
-- Bypasses gRPC HTTP/2 stream deadlocks common on Windows firewall and proxy environments.
-- Uses standard HTTPS REST endpoints: `https://generativelanguage.googleapis.com/v1beta/...`.
-- Supported Model: **`gemini-3.8-flash`** (configured via `.env` or Settings UI).
-
-### 2. Five-Stage Network Diagnostics (`core/connection_tester.py`)
-Provides independent, isolated diagnostic checks with distinct status indicators:
-- **DNS Resolution:** Resolves `generativelanguage.googleapis.com` to target Google IPs.
-- **TCP Port 443 Handshake:** Establishes a raw socket connection within a dedicated 15-second timeout.
-- **HTTPS / TLS Validation:** Validates SSL/TLS certificate chains and cipher negotiation.
-- **API Key Authentication:** Verifies API key validity with Google without triggering long reasoning token queues.
-- **Model Availability:** Probes the target model (`gemini-3.8-flash`) and distinguishes between `404 Model Not Found`, `429 Rate Limit/Quota Exceeded`, and `503 Service Unavailable`.
-
-### 3. Fault Tolerance & Exponential Backoff
-- Differentiates transient errors (HTTP 429, 500, 502, 503, 504) from fatal errors (HTTP 400 Invalid Key, HTTP 404 Model Not Found).
-- Automatic retry loop with jittered exponential backoff for transient conditions.
-- **Graceful Fallback:** If Gemini is offline, unconfigured, or timed out, all AST, Rule, and Static analysis engines continue to operate completely and report findings accurately.
+| Module | Navigation | Primary Capabilities |
+| :--- | :--- | :--- |
+| **1. Dashboard** | `📊 Dashboard` | Executive quality gauges, defect severity breakdowns, language donut charts, and recent activity telemetry. |
+| **2. Code Review** | `🔍 Code Review` | Source code editor, multi-engine checkboxes, clean drag-and-drop file ingestion, and multi-file review triggers. |
+| **3. Issue Explorer** | `🔎 Issue Explorer` | State-synchronized defect inspection, filtering by severity/engine/category, side-by-side diffs, and automated Pytest test generation. |
+| **4. Evaluation** | `📈 Evaluation & Analytics` | Scientific benchmark against verified ground truth. Confusion matrix heatmap and comparative Precision/Recall/F1 metrics. |
+| **5. Dataset Explorer**| `📁 Dataset Explorer` | Telemetry browser over 500 historical reviews with search, descriptive analytics, and CSV export. |
+| **6. Review History** | `🕒 Review History` | SQLite persistence table with instant review loading to inspect past findings in Code Review and Issue Explorer. |
+| **7. Settings** | `⚙️ Settings` | Masked API key configuration, 5-stage live network diagnostics, and real-time connectivity status indicators. |
 
 ---
 
-## 🎨 Modern Dark UI & File Ingestion
+## 📊 Scientific Evaluation & Ground-Truth Benchmark
 
-- **SaaS Dark Palette:** Deep slate background (`#0b0f19` / `#0f172a`), crisp contrast typography using *Inter* and *JetBrains Mono*, and accessible status badges.
-- **Minimalist Dropzone:** Removed messy language extension listings and cluttered text; features a clean, responsive dropzone with styled browse buttons.
-- **File Chips:** Uploaded files render as compact metadata pills (`📄 filename.py (4KB)`) with multi-file management and active file switcher.
-- **State Preservation:** Navigating between Dashboard, Code Review, Issue Explorer, and Settings preserves all uploaded code and review results in Streamlit session state.
+CodeGuard AI 2.0 does not employ synthetic or fabricated benchmark metrics. The evaluation engine benchmarks analyzers directly against `data/benchmark_dataset.csv` containing verified code samples across Python, Java, JavaScript, C++, and SQL:
 
----
+```mermaid
+pie title Ground-Truth Benchmark Defect Categories
+    "Logic & Arithmetic Flaws" : 25
+    "Injection (SQL & Command)" : 20
+    "Credentials & Secret Leaks" : 20
+    "Deserialization & Memory Safety" : 15
+    "Clean / Reference Code" : 20
+```
 
-## 📊 Benchmark Dataset & Scientific Evaluation
-
-CodeGuard AI includes a scientific evaluation framework with verified ground truth:
-
-- **Benchmark Dataset (`data/benchmark_dataset.csv`):** Verified code samples across 5 languages categorized into:
-  - Logic & Arithmetic Flaws
-  - SQL & Command Injection
-  - Hardcoded Secrets & Credentials
-  - Deserialization & Memory Safety
-  - Clean / Reference Implementations
-- **Data Dictionary (`data/data_dictionary.csv`):** Comprehensive schema definition describing ground-truth labels and evaluation metrics.
-- **Historical Telemetry (`data/dataset.csv`):** 500 realistic code review records with defect telemetry, quality ratings, and resolution times.
-- **Scientific Metrics:** Computes Precision, Recall, F1-Score, and False Positive Rate across all engines without simulated or hardcoded results.
+### Empirical Engine Comparison Matrix:
+- **Rule Engine:** High precision, near-instant execution, zero network overhead; excels at pattern and credential leak detection.
+- **AST Analyzer:** 100% deterministic structural inspection for Python; zero false-positive rate on mutable defaults and broad exceptions.
+- **Static Linters:** Industrial vulnerability benchmarks via Bandit, strict PEP-8 standards via Pylint, and complexity scoring via Radon.
+- **Contextual LLM (Gemini 3.8 Flash):** High recall for subtle algorithmic defects, business logic flaws, and automated fix generation.
+- **Hybrid Fusion:** Merges all engines with multi-attribute deduplication, providing the highest F1-Score while eliminating single-engine blind spots.
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Language & Runtime** | Python 3.10+, SQLite3 |
-| **LLM Provider** | Google Gemini API (`gemini-3.8-flash` via Direct REST) |
-| **Static Analysis** | Python `ast`, Bandit, Pylint, Radon |
-| **Web Frontend** | Streamlit, HTML5, CSS3, JetBrains Mono font |
-| **Data & Charts** | Pandas, NumPy, Scikit-learn, Plotly Express & Graph Objects |
-| **Report Generation** | ReportLab (Academic PDF), JSON, CSV |
-| **Automated Testing** | Pytest, Unittest Mock |
+```mermaid
+graph LR
+    subgraph Frontend["Presentation Layer"]
+        Streamlit["Streamlit SaaS Dark"]
+        Plotly["Plotly Express & Charts"]
+        HTML_CSS["Modern CSS3 / JetBrains Mono"]
+    end
+
+    subgraph CoreEngine["Application & Engine Layer"]
+        Orchestrator["Analyzer Orchestrator"]
+        AST["Python ast.NodeVisitor"]
+        Rules["Polyglot Regex Heuristics"]
+        Linters["Bandit / Pylint / Radon"]
+        LLM["Google Gemini 3.8 Flash (REST)"]
+    end
+
+    subgraph Storage["Data & Export Layer"]
+        SQLite["SQLite3 Database"]
+        Dataset["Benchmark Ground Truth"]
+        ReportLab["Academic PDF Generator"]
+    end
+
+    Frontend --> CoreEngine
+    CoreEngine --> Storage
+```
 
 ---
 
@@ -192,121 +281,132 @@ CodeGuard AI includes a scientific evaluation framework with verified ground tru
 
 ```
 CodeGuard-AI/
-├── .env.example                  # Template environment configuration
-├── .gitignore                     # Git ignore rules (secrets, venvs, DBs)
-├── README.md                      # Comprehensive project documentation
-├── requirements.txt               # Locked production dependencies
-├── app.py                         # Streamlit multi-page frontend application
+├── .env.example                  # Environment configuration template
+├── .gitignore                    # Comprehensive secrets & temporary exclusions
+├── README.md                     # Enterprise documentation & architectural blueprints
+├── requirements.txt              # Production dependency specifications
+├── app.py                        # Streamlit multi-page enterprise dashboard
 │
-├── config/                        # Configuration module
+├── config/                       # Centralized configuration management
 │   ├── __init__.py
-│   └── settings.py                # Environment parser & system settings
+│   └── settings.py               # Environment variable loaders & path definitions
 │
-├── core/                          # Core analysis and detection engines
+├── core/                         # Analysis, parsing, and diagnostic engines
 │   ├── __init__.py
-│   ├── analyzer.py                # Central orchestrator & finding deduplication
-│   ├── ast_analyzer.py            # Structural Python AST NodeVisitor
-│   ├── rule_engine.py             # Polyglot pattern vulnerability detector
-│   ├── static_analyzer.py         # Bandit, Pylint, and Radon linter wrappers
-│   ├── llm_service.py             # Gemini client with REST execution & backoff
-│   ├── connection_tester.py       # 5-stage network diagnostic pipeline
-│   ├── schemas.py                 # Pydantic v2 data models & type definitions
-│   ├── security.py                # File size, path, and extension sanitizers
-│   ├── test_generator.py          # Automated Pytest reproduction suite builder
-│   ├── report_exporter.py         # JSON, CSV, and Academic PDF report generators
-│   └── evaluation.py              # Scientific benchmark evaluator & confusion matrix
+│   ├── analyzer.py               # Multi-engine orchestrator & deduplication
+│   ├── ast_analyzer.py           # Structural Python AST NodeVisitor
+│   ├── rule_engine.py            # Polyglot pattern vulnerability engine
+│   ├── static_analyzer.py        # Bandit, Pylint, and Radon process wrappers
+│   ├── llm_service.py            # Gemini client with REST execution & backoff
+│   ├── connection_tester.py      # 5-stage network diagnostic pipeline
+│   ├── schemas.py                # Pydantic v2 data models & validation
+│   ├── security.py               # File extension, size, and path sanitization
+│   ├── test_generator.py         # Automated Pytest regression suite builder
+│   ├── report_exporter.py        # JSON, CSV, and Academic PDF report generators
+│   └── evaluation.py             # Scientific benchmark evaluation & confusion matrix
 │
-├── components/                    # UI visualization components
+├── components/                   # Interactive UI components
 │   ├── __init__.py
-│   └── charts.py                  # Plotly charts (Severity, Language, Confusion Matrix)
+│   └── charts.py                 # Plotly charts (Severity, Donut, Confusion Matrix)
 │
-├── database/                      # Telemetry persistence layer
+├── database/                     # Telemetry persistence layer
 │   ├── __init__.py
-│   └── history.py                 # SQLite database models & query interfaces
+│   └── history.py                # SQLite database interface & migrations
 │
-├── data/                          # Ground-truth datasets & benchmarks
-│   ├── benchmark_dataset.csv      # Verified ground-truth benchmark suite
-│   ├── data_dictionary.csv        # Schema definition & data dictionary
-│   └── dataset.csv                # 500 historical code review telemetry records
+├── data/                         # Verified benchmark datasets
+│   ├── benchmark_dataset.csv     # Verified ground-truth benchmark suite
+│   ├── data_dictionary.csv       # Dataset schema & metric dictionary
+│   └── dataset.csv               # Historical code review telemetry records
 │
-├── outputs/                       # Export and artifact storage
-│   ├── eda/                       # Generated exploratory charts
-│   └── reports/                   # Saved review reports
+├── outputs/                      # Generated review artifacts
+│   ├── eda/                      # Exploratory data analysis visuals
+│   └── reports/                  # Generated audit reports
 │
-└── tests/                         # Comprehensive unit & regression test suite
+└── tests/                        # 100% passing automated test suite
     ├── __init__.py
-    ├── test_analyzer.py           # Core orchestrator and deduplication tests
-    ├── test_dataset.py            # Benchmark dataset integrity tests
-    ├── test_gemini_connection.py  # Network diagnostics & mock API tests
-    ├── test_master_regression.py  # End-to-end regression audit tests
-    ├── test_rules.py              # Polyglot rule engine pattern tests
-    └── test_v2_features.py        # PDF exporter, test generator, & SQLite tests
+    ├── test_analyzer.py          # AST and orchestrator unit tests
+    ├── test_dataset.py           # Ground-truth dataset integrity tests
+    ├── test_gemini_connection.py # Network diagnostics & mock API test suite
+    ├── test_master_regression.py # Full system regression & error handling tests
+    ├── test_rules.py             # Polyglot rule engine verification
+    └── test_v2_features.py       # Exporter, test generator, & database tests
 ```
 
 ---
 
 ## 🚀 Installation & Quick Start
 
-### 1. Clone & Set Up Virtual Environment
+### 1. Prerequisites
+- Python 3.10, 3.11, or 3.12
+- Git
+
+### 2. Clone & Environment Setup
 ```bash
-git clone https://github.com/<your-username>/CodeGuard-AI.git
-cd CodeGuard-AI
+git clone https://github.com/krishna-192006/CodeGuard.git
+cd CodeGuard
 python -m venv venv
 
-# On Windows:
+# Windows (Command Prompt / PowerShell):
 .\venv\Scripts\activate
-# On Linux/macOS:
+
+# Linux / macOS:
 source venv/bin/activate
 ```
 
-### 2. Install Dependencies
+### 3. Install Dependencies
 ```bash
-pip install -r requirements.txt
+pip install -r CodeGuard-AI/requirements.txt
 ```
 
-### 3. Configure Environment Variables
-Copy `.env.example` to `.env` and set your configuration:
+### 4. Configure Environment
 ```bash
-cp .env.example .env
+cp CodeGuard-AI/.env.example CodeGuard-AI/.env
 ```
-Inside `.env`:
+Inside `CodeGuard-AI/.env`:
 ```ini
 GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-3.8-flash
 LLM_TIMEOUT=60
 MAX_FILE_SIZE_KB=500
 ```
-*(Note: CodeGuard AI runs in deterministic local mode using Rules + AST + Linters even without an API key).*
+> **Note:** CodeGuard AI operates in local offline mode using AST, Rule Engine, and Linters even if no Gemini API key is configured.
 
-### 4. Launch the Streamlit Dashboard
+### 5. Launch the Application
 ```bash
-streamlit run app.py
+streamlit run CodeGuard-AI/app.py
 ```
-Open **`http://localhost:8501`** in your browser.
+Open your browser at: **`http://localhost:8501`**
 
 ---
 
-## 🧪 Automated Test Suite
+## 🧪 Automated Testing & CI Verification
 
-CodeGuard AI 2.0 maintains a 100% passing test suite with zero external network dependencies (all external APIs are cleanly mocked):
+The test suite validates every layer of the platform using offline mock fixtures with zero external network dependencies:
 
 ```bash
-pytest tests/ -v
+pytest CodeGuard-AI/tests -v
 ```
 
-### Test Suite Coverage (**81 Passing Tests**):
-- **Gemini Connection & Network Diagnostics (`test_gemini_connection.py` - 16 tests):** Validates DNS failure handling, TCP timeouts, SSL certificate errors, HTTP 400 (Invalid Key), HTTP 404 (Model Not Found), HTTP 429 (Rate Limit), HTTP 503 (Server Error), and dynamic key configuration.
-- **Polyglot Rule Engine (`test_rules.py` - 19 tests):** Validates comment stripping and defect pattern recognition across Python, Java, JS, C++, Go, and SQL.
-- **AST Structural Parser (`test_analyzer.py` - 10 tests):** Asserts node visitor detection for mutable arguments, constant division, and broad exceptions.
-- **Dataset & Benchmark (`test_dataset.py` - 11 tests):** Ensures benchmark integrity, ground-truth label validity, and metric calculation consistency.
-- **Master Regression Suite (`test_master_regression.py` - 10 tests):** End-to-end regression covering JSON parsing, graceful degradation, and provenance tracking.
-- **V2 Platform Features (`test_v2_features.py` - 15 tests):** Validates PDF report compilation, Pytest suite generation, SQLite persistence, and state retrieval.
+### Test Suite Summary (**81 of 81 Passed**):
+- **`test_gemini_connection.py` (16 tests):** Validates DNS failure mapping, TCP timeouts, SSL certificate errors, HTTP 400, HTTP 404, HTTP 429, HTTP 503, dynamic key configuration, and token count probes.
+- **`test_rules.py` (19 tests):** Validates multi-language comment stripping and pattern heuristics across Python, Java, JS, C++, Go, and SQL.
+- **`test_analyzer.py` (10 tests):** Tests AST visitor detection for mutable defaults, division by zero, and broad exceptions.
+- **`test_dataset.py` (11 tests):** Asserts ground-truth benchmark integrity and metric precision calculations.
+- **`test_master_regression.py` (10 tests):** Validates JSON schema deserialization, graceful degradation, and provenance tracking.
+- **`test_v2_features.py` (15 tests):** Validates PDF compilation, Pytest suite generation, and SQLite persistence.
 
 ---
 
-## 🔒 Security & Isolation Principles
+## 🔒 Security & Privacy Guarantees
 
-- **No Host Code Execution:** Source code submitted for analysis is statically parsed and never executed on the host server.
-- **Subprocess Isolation:** External linters (Bandit, Pylint, Radon) execute within isolated subprocesses with mandatory execution timeouts and temporary directory scoping.
-- **Credential Protection:** API keys and environment variables are strictly excluded via `.gitignore`, masked in UI inputs, and omitted from application logs and exported reports.
-- **Input Sanitization:** Multi-stage validation rejects path traversals, unsupported file formats, and payloads exceeding size thresholds.
+1. **No Untrusted Execution:** Analyzed source code is statically parsed and evaluated; code is never executed on the host runtime.
+2. **Subprocess Isolation:** Linters execute within temporary workspaces with restricted execution privileges and strict timeout policies.
+3. **Secret Protection:** API keys and environment files are guarded via `.gitignore`, masked in UI input fields, and scrubbed from error logs, database records, and exported reports.
+4. **Input Sanitization:** Multi-tier validation rejects path traversal attempts, unauthorized extensions, and payloads exceeding size thresholds.
+
+---
+
+<div align="center">
+  <b>Developed for the HCLTech Career Shaper Programme</b><br>
+  Designed & Engineered by Krishna Pandey
+</div>
