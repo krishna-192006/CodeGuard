@@ -1,0 +1,42 @@
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+*.env
+secrets.env
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+
+# ── Virtual Environments ──────────────────────────────────────────────────────
+venv/
+env/
+.venv/
+
+# ── Database ─────────────────────────────────────────────────────────────────
+*.db
+*.sqlite3
+
+# ── Notebooks ─────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── Outputs (keep directory, ignore generated files) ─────────────────────────
+outputs/eda/*.png
+outputs/eda/*.jpg
+outputs/reports/*.html

@@ -1,0 +1,9 @@
+column_name,data_type,sample_value_1,sample_value_2,sample_value_3,nullable,description_fill_in
+review_id,object/numeric,REV00001,REV00002,REV00003,No,review_id — [Learner to fill in description]
+file_type,object/numeric,JavaScript,Java,TypeScript,No,file_type — [Learner to fill in description]
+lines_of_code,object/numeric,368,425,249,No,lines_of_code — [Learner to fill in description]
+issue_type,object/numeric,null_pointer,unused_variable,sql_injection,No,issue_type — [Learner to fill in description]
+severity,object/numeric,High,Low,Critical,No,severity — [Learner to fill in description]
+llm_confidence,object/numeric,0.789,0.969,0.624,No,llm_confidence — [Learner to fill in description]
+accepted,object/numeric,0,1,1,No,accepted — [Learner to fill in description]
+fix_time_min,object/numeric,113,116,35,No,fix_time_min — [Learner to fill in description]

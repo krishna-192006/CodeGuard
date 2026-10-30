@@ -1,0 +1,39 @@
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+*.env
+secrets.env
+CodeGuard-AI/.env
+CodeGuard-AI/*.env
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+
+# ── Virtual Environments ──────────────────────────────────────────────────────
+venv/
+env/
+.venv/
+CodeGuard-AI/venv/
+CodeGuard-AI/.venv/
+
+# ── Database ─────────────────────────────────────────────────────────────────
+*.db
+*.sqlite3
+database/*.db
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp

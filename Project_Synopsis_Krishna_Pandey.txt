@@ -1,0 +1,29 @@
+PROJECT SYNOPSIS
+================
+HCLTech Career Shaper Programme — Project No. 74
+
+Project Title: Automated Code Review and Bug Detection Using LLM
+Learner Name: Krishna Pandey
+Roll Number: [Fill in]
+Mentor: [Fill in]
+Date: [Fill in]
+
+1. Problem Statement
+Modern software teams struggle to identify bugs and security issues before deployment.
+Manual review is slow and inconsistent. CodeGuard AI automates this first pass.
+
+2. Proposed Solution
+CodeGuard AI uses three analysis layers:
+- Rule-based patterns (28 rules, Python + Java)
+- Static analysis (Bandit, Pylint, Radon)
+- Google Gemini LLM (optional)
+
+3. Technology Stack
+Streamlit, Python, Pydantic, Pandas, Plotly, Bandit, Pylint, Radon, SQLite, Gemini API
+
+4. Dataset: 500 rows, 8 columns (review_id, file_type, lines_of_code, issue_type,
+   severity, llm_confidence, accepted, fix_time_min)
+
+5. Ethics: No code executed. No automatic fixes. Human approval required.
+
+Learner Signature: _________________________ Date: _____________

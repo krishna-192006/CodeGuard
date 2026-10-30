@@ -1,0 +1,9 @@
+column_name,data_type,sample_value_1,sample_value_2,sample_value_3,nullable,description_fill_in
+review_id,String,REV00001,REV00002,REV00003,No,Unique identifier assigned to each code review session
+file_type,String,JavaScript,Java,TypeScript,No,Programming language or file extension of the audited code
+lines_of_code,Integer,368,425,249,No,Total number of non-empty source lines parsed in the review
+issue_type,String,null_pointer,unused_variable,sql_injection,No,Normalized category identifier of the primary defect found
+severity,String,High,Low,Critical,No,Impact rating categorized as Critical High Medium Low or Info
+llm_confidence,Float,0.789,0.969,0.624,No,Confidence probability score (0.0 to 1.0) assigned by the model
+accepted,Integer,0,1,1,No,Binary indicator whether the developer accepted the review recommendation
+fix_time_min,Integer,113,116,35,No,Total duration in minutes required to remediate and verify the bug fix
